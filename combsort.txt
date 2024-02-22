@@ -1,0 +1,73 @@
+/*
+    LAST UPDATED: 10/20/2023
+
+    References
+    Comb Sort Pseudocode and actual code: https://iq.opengenus.org/comb-sort/
+    Comb Sort Graphic Tutorial: https://www.youtube.com/watch?v=Ic5U40E0DJ0
+    C floor(): https://www.programiz.com/c-programming/library-function/math.h/floor
+    Math.h Library: https://www.geeksforgeeks.org/c-library-math_h/
+    Comb Sort: https://www.geeksforgeeks.org/comb-sort/
+*/
+
+/* long runCombSortTest(Record *records, int n)
+{
+    long averageExecutionTime;
+    long CSstartTime, CSendTime, CSexecutionTime;
+
+    // benchmark algorithm at least 5 times and average the results
+    for (int i = 0; i < 5; i++)
+    {
+        printf("COMB SORT ITERATION %d\n", i);
+        CSstartTime = currentTimeMillis(); // store the current time
+        combSort(records, n);              // run comb sort
+        CSendTime = currentTimeMillis();   // store the current time
+        CSexecutionTime = CSendTime - CSstartTime;
+        printf("Comb Sort took %ld milliseconds to execute.\n", CSexecutionTime);
+        averageExecutionTime += CSexecutionTime; //add to overall average
+    }
+
+    return averageExecutionTime / 5.0;
+} */
+
+
+int combSort_Shrink(int gap, int shrink)
+{
+    gap = gap / shrink;
+    if (gap < 1)
+    {
+        gap = 1;
+    }
+}
+
+void combSort(Record *arr, int n)
+{
+    // combSort is a modification of bubble sort but the gap between elements is increased so it
+    // is divided by 1.3 every iteration
+
+    // set initial gap size where gap is number of elements or size of the array
+    int gap = n;
+    // set shrink factor to 1.3 (divides gap by 1.3 each iteration)
+    float shrink = 1.3;
+    // set swapped flag to false
+    int swapped = 0;
+
+    while (gap > 1 || swapped == 1)
+    {
+        gap = combSort_Shrink(gap, shrink);
+        swapped = 0;
+
+        // compare all elements
+        for (int i = 0; i < (n - gap); i++)
+        {
+            int temp;
+            if (arr[i] > arr[i + gap])
+            {
+                // Swap arr[i] and arr[i+gap]
+                temp = arr[i];
+                *arr[i] = arr[i + gap];
+                *arr[i + gap] = temp;
+                swapped = 1;
+            }
+        }
+    }
+}
