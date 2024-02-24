@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include "record.c"
 
-typedef char String[101]; //In order to use strings 
 
 /*
 * You may declare additional variables and helper functions
@@ -24,7 +23,6 @@ void swap(Record *a, Record *b){
 
 void insertionSort(Record *arr, int n)
 {
-    // TODO: Implement this sorting algorithm here.
 
     int step;   
     for (step = 1; step < n; step++)
@@ -43,7 +41,6 @@ void insertionSort(Record *arr, int n)
 
 void selectionSort(Record *arr, int n)
 {
-    // TODO: Implement this sorting algorithm here.
 
     int i, j, min;
     Record temp;
@@ -63,9 +60,6 @@ void selectionSort(Record *arr, int n)
             arr[min] = temp;
         }
     }
-
-
-
 
 }
 
@@ -95,12 +89,11 @@ void merge(Record *arr, int left, int mid, int right, Record *temp) {
 
 void mergeSort(Record *arr, int n)
 {
-    // TODO: Implement this sorting algorithm here.
 
- // Create a temporary array to hold the merged results
+ //Temp Array
     Record *temp = (Record *)malloc(n * sizeof(Record));
-
-    for (int current_size = 1; current_size <= n - 1; current_size *= 2) {
+    int current_size; 
+    for (current_size = 1; current_size <= n - 1; current_size *= 2) {
         for (int left_start = 0; left_start < n - 1; left_start += 2 * current_size) {
             int mid = (left_start + current_size - 1) < (n - 1) ? (left_start + current_size - 1) : (n - 1);
             int right_end = (left_start + 2 * current_size - 1) < (n - 1) ? (left_start + 2 * current_size - 1) : (n - 1);
@@ -111,10 +104,6 @@ void mergeSort(Record *arr, int n)
     }
     
     free(temp);  // Free the temporary array
-
-
-
-
 }
 
 /*
@@ -124,48 +113,16 @@ void mergeSort(Record *arr, int n)
 */
 
 
-// Function to read data from the file into an array of structs
-int readDataFromFile(const char *filename, Record dataArray[], int maxEntries) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        fprintf(stderr, "Error opening file %s\n", filename);
-        return -1;
-    }
-
-    int count = 0;
-    while (fscanf(file, "%d %s", &dataArray[count].idNumber, dataArray[count].name) == 2 && count < maxEntries) {
-        count++;
-    }
-
-    fclose(file);
-    return count;
-}
-
-// Function to write data from an array of structs to the file
-void writeDataToFile(const char *filename, Record dataArray[], int count) {
-    FILE *file = fopen(filename, "w");
-    if (file == NULL) {
-        fprintf(stderr, "Error opening file %s\n", filename);
-        return;
-    }
-
-    for (int i = 0; i < count; i++) {
-        fprintf(file, "%d %s\n", dataArray[i].idNumber, dataArray[i].name);
-    }
-
-    fclose(file);
-}
-
 // BubbleSort
-void bubbleSort(Record array[], int n) {
+void bubbleSort(Record *arr, int n) {
     int i, j;
     Record temp;
     for (i = 1; i < n - 1; i++) {
         for (j = 0; j < n - i - 1; j++) {
-            if (array[j].idNumber > array[j + 1].idNumber) {
-                temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+            if (arr[j].idNumber > arr[j + 1].idNumber) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
@@ -173,12 +130,94 @@ void bubbleSort(Record array[], int n) {
 
 
 
+/*
+=========================
+Empirical Frequency Count
+=========================
+*/
 
+void InsertionSortWithSteps(Record *arr, int n)
+{
+    int count = 0;
 
+    int step; count++;   
+    for (count++, step = 1; count++, step < n; count++, step++)
+    {
+        Record key = arr[step]; count++; 
+        int j = step - 1;  count++;
+        while (count++, j >= 0 && key.idNumber < arr[j].idNumber)   
+        {
+            arr[j + 1] = arr[j]; count++;
+            j = j - 1; count++;
+        }
+        arr[j + 1] = key;  count++;
+    } count++;
+    printf("Number of Steps: %d", count);
+}
 
+void SelectionSortWithCount(Record *arr, int n)
+{
+    int count;
 
+    int i, j, min; count += 3;
+    Record temp; count++;
 
+    for (count++, i = 0; count++, i < (n - 1); count++, i++)
+    {
+        min = i; count++;
+        for (count++, j = i + 1; count++, j < n; count++, j++)
+        {
+            if (arr[j].idNumber < arr[min].idNumber, count++)
+                min = j; count++;
+        } count++;
+        if (count++, min != i) 
+        {
+            temp = arr[i]; count++;
+            arr[i] = arr[min]; count++;
+            arr[min] = temp; count++;
+        }
+    } count++;
 
+}
+
+void MergeSortWithCount(Record *arr, int n)
+{
+    int count = 0;
+
+    //Temp Array
+    Record *temp = (Record *)malloc(n * sizeof(Record)); count++;
+    int current_size; count++;
+    int left_start; count++;
+
+    for (count++, current_size = 1; count++, current_size <= n - 1; count++, current_size *= 2) {
+        for (count++, left_start = 0; left_start < n - 1, count++; left_start += 2 * current_size, count++) {
+            int mid = (left_start + current_size - 1) < (n - 1) ? (left_start + current_size - 1) : (n - 1); count++;
+            int right_end = (left_start + 2 * current_size - 1) < (n - 1) ? (left_start + 2 * current_size - 1) : (n - 1); count++;
+            
+            // Merge the two sub-arrays
+            merge(arr, left_start, mid, right_end, temp); count++;
+        } count++;
+    } count++;
+    
+    free(temp);  /*Free the temporary array*/ count++;
+}
+
+void BubbleSortWithCount(Record *arr, int n){
+    int count = 0;
+
+    int i, j; count +=2;
+    Record temp; count++;
+     for (count++, i = 1; count++, i < n - 1; count++, i++) {
+        for (count++, j = 1; count++, j < n - i - 1; count++, j++) {
+            if (arr[j].idNumber > arr[j + 1].idNumber, count++) {
+                temp = arr[j], count++;
+                arr[j] = arr[j + 1], count++;
+                arr[j + 1] = temp, count++;
+            }
+        }
+    } count++;
+    printf("Number of Steps: %d", count);
+}
 
 
 
