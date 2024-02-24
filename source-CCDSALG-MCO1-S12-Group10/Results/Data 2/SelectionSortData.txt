@@ -1,0 +1,40 @@
+random100.txt:
+Execution time in seconds: 0.000
+Outer loop executed 99 times
+Inner loop executed 4950 times.
+
+random25000.txt:
+Execution time in seconds: 0.671
+Outer loop executed 24999 times
+Inner loop executed 312487500 times.
+
+random50000.txt:
+Execution time in seconds: 2.764
+Outer loop executed 49999 times
+Inner loop executed 1249975000 times.
+
+random75000.txt:
+Execution time in seconds: 6.238
+Outer loop executed 74999 times
+Inner loop executed 2812462500 times.
+
+random100000.txt:
+Execution time in seconds: 11.486
+Outer loop executed 99999 times
+Inner loop executed 4999950000 times.
+
+fullysorted.txt:
+Execution time in seconds: 11.505
+Outer loop executed 99999 times
+Inner loop executed 4999950000 times.
+
+almostsorted.txt:
+Execution time in seconds: 11.457
+Outer loop executed 99999 times
+Inner loop executed 4999950000 times.
+
+totallyreversed.txt:
+Execution time in seconds: 11.963
+Outer loop executed 99999 times
+Inner loop executed 4999950000 times.
+
