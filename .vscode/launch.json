@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/redpo/Downloads/Andre's Files/andre acads/2nd Year Sophomore/2nd term/CCDSALG/MCO1/CCDSALG-MC01",
+      "program": "c:/Users/redpo/Downloads/Andre's Files/andre acads/2nd Year Sophomore/2nd term/CCDSALG/MCO1/CCDSALG-MC01/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
