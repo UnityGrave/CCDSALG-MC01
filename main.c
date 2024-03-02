@@ -23,39 +23,6 @@
 //CURRENT FILE PATH - CHANGE THIS LINE TO CHANGE FILES
 #define currentFilePath random25000FilePath
 
-// colors for console
-#define ANSI_COLOR_RED "\x1b[31m"
-#define ANSI_OFF "\x1b[0m"
-#define ANSI_YELLOW "\x1b[33m"
-
-
-
-long runCombSortTest(Record *records, int n)
-{
-    long averageExecutionTime = 0;
-    long start, end, executionTime;
-
-    // benchmark algorithm at least 5 times and average the results
-    for (int i = 0; i < 5; i++)
-    {
-        start = 0;
-        end = 0;
-        executionTime = 0;
-        printf("COMB SORT ITERATION %d\n", i);
-        start = currentTimeMillis(); // store the current time
-        printf("Start Time: %ld\n", start);
-        combSort(records, n);      // run sorting alg
-        end = currentTimeMillis(); // store the current time
-        printf("End Time: %ld\n", end);
-        executionTime = end - start;
-        printf(ANSI_YELLOW "Comb Sort took %ld milliseconds to execute.\n" ANSI_OFF, executionTime);
-        averageExecutionTime += executionTime; // add to overall average
-        printf("Current Total Average Execution Time: %ld\n", averageExecutionTime);
-        readFile(records, currentFilePath);
-    }
-    return averageExecutionTime / 5.0;
-}
-
 long runMergeSortTest(Record *records, int n)
 {
     long averageExecutionTime = 0;
@@ -74,9 +41,9 @@ long runMergeSortTest(Record *records, int n)
         end = currentTimeMillis(); // store the current time
         printf("End Time: %ld\n", end);
         executionTime = end - start;
-        printf(ANSI_YELLOW "Merge Sort took %ld milliseconds to execute.\n" ANSI_OFF, executionTime);
+        printf("Merge Sort took %ld milliseconds to execute.\n", executionTime);
         averageExecutionTime += executionTime; // add to overall average
-        printf("Current Total Average Execution Time: %ld\n", averageExecutionTime);
+        printf("Current Total Average Execution Time: %ld\n\n", averageExecutionTime);
         readFile(records, currentFilePath);
     }
     return averageExecutionTime / 5.0;
@@ -100,9 +67,9 @@ long runSelectionSortTest(Record *records, int n)
         end = currentTimeMillis(); // store the current time
         printf("End Time: %ld\n", end);
         executionTime = end - start;
-        printf(ANSI_YELLOW "Selection Sort took %ld milliseconds to execute.\n" ANSI_OFF, executionTime);
+        printf("Selection Sort took %ld milliseconds to execute.\n", executionTime);
         averageExecutionTime += executionTime; // add to overall average
-        printf("Current Total Average Execution Time: %ld\n", averageExecutionTime);
+        printf("Current Total Average Execution Time: %ld\n\n", averageExecutionTime);
         readFile(records, currentFilePath);
     }
     return averageExecutionTime / 5.0;
@@ -126,9 +93,9 @@ long runInsertionSortTest(Record *records, int n)
         end = currentTimeMillis(); // store the current time
         printf("End Time: %ld\n", end);
         executionTime = end - start;
-        printf(ANSI_YELLOW "Insertion Sort took %ld milliseconds to execute.\n" ANSI_OFF, executionTime);
+        printf("Insertion Sort took %ld milliseconds to execute.\n", executionTime);
         averageExecutionTime += executionTime; // add to overall average
-        printf("Current Total Average Execution Time: %ld\n", averageExecutionTime);
+        printf("Current Total Average Execution Time: %ld\n\n", averageExecutionTime);
         readFile(records, currentFilePath);
     }
     return averageExecutionTime / 5.0;
@@ -184,10 +151,9 @@ int main()
     //printf("LAST LINE OF RECORD ARRAY: %d%s\n", currentRecord[n - 1].idNumber, currentRecord[n - 1].name);
 
     /* Uncomment depending on which should run */
-    printf(ANSI_COLOR_RED "Average execution time for Insertion Sort %ld milliseconds\n" ANSI_OFF, runInsertionSortTest(currentRecord, n));
-    printf(ANSI_COLOR_RED "Average execution time for Selection Sort %ld milliseconds\n" ANSI_OFF, runSelectionSortTest(currentRecord, n));
-    printf(ANSI_COLOR_RED "Average execution time for Merge Sort %ld milliseconds\n" ANSI_OFF, runMergeSortTest(currentRecord, n));
-    printf(ANSI_COLOR_RED "Average execution time for Comb Sort %ld milliseconds\n" ANSI_OFF, runCombSortTest(currentRecord, n));
+    printf("Average execution time for Insertion Sort %ld milliseconds\n\n", runInsertionSortTest(currentRecord, n));
+    printf("Average execution time for Selection Sort %ld milliseconds\n\n", runSelectionSortTest(currentRecord, n));
+    printf("Average execution time for Merge Sort %ld milliseconds\n\n", runMergeSortTest(currentRecord, n));
 
     /* For counting empirical frequency, uncomment depending on which should run */
     //insertionSortWithStepsAsCount(currentRecord, n);

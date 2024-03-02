@@ -63,10 +63,6 @@ void selectionSort(Record *arr, int n)
             arr[min] = temp;
         }
     }
-
-
-
-
 }
 
 void merge(Record *arr, int left, int mid, int right, Record *temp) {
@@ -97,7 +93,7 @@ void mergeSort(Record *arr, int n)
 {
     // TODO: Implement this sorting algorithm here.
 
- // Create a temporary array to hold the merged results
+    // Create a temporary array to hold the merged results
     Record *temp = (Record *)malloc(n * sizeof(Record));
 
     for (int current_size = 1; current_size <= n - 1; current_size *= 2) {
@@ -111,10 +107,6 @@ void mergeSort(Record *arr, int n)
     }
     
     free(temp);  // Free the temporary array
-
-
-
-
 }
 
 /*
